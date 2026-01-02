@@ -126,7 +126,7 @@ export default function HeartRate() {
                         </View>
                         <View style={styles.metricRow}>
                             <CircularProgress
-                                value={20}
+                                value={30}
                                 maxValue={100}
                                 size={120}
                                 strokeWidth={12}
@@ -136,7 +136,7 @@ export default function HeartRate() {
                                 status="Good"
                             />
                             <CircularProgress
-                                value={12}
+                                value={50}
                                 maxValue={100}
                                 size={120}
                                 strokeWidth={12}

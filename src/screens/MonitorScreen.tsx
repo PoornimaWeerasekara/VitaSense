@@ -3,11 +3,15 @@ import { View, Text, StyleSheet, TouchableOpacity, Switch } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../../App';
 
 export default function MonitorScreen() {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [facialMonitoring, setFacialMonitoring] = useState(true);
   const [webActivityMonitoring, setWebActivityMonitoring] = useState(true);
-  const [heartRate, setHeartRate] = useState(88);
+  const [heartRate, setHeartRate] = useState(100);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -73,7 +77,10 @@ export default function MonitorScreen() {
             <Text style={styles.heartRateStatus}>- NORMAL</Text>
           </View>
 
-          <TouchableOpacity style={[styles.actionButton, { backgroundColor: '#EF5350' }]}>
+          <TouchableOpacity
+            style={[styles.actionButton, { backgroundColor: '#EF5350' }]}
+            onPress={() => navigation.navigate('HeartRate')}
+          >
             <Ionicons name="heart" size={24} color="white" />
             <Text style={styles.actionButtonText}>Check heart rate now</Text>
           </TouchableOpacity>
