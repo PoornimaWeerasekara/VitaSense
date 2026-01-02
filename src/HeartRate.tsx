@@ -45,6 +45,7 @@ const CircularProgress: React.FC<CircularProgressProps> = ({
                 />
                 {/* Progress Circle */}
                 <Circle
+                    key={`progress-${value}-${maxValue}`}
                     cx={size / 2}
                     cy={size / 2}
                     r={radius}
@@ -104,7 +105,7 @@ export default function HeartRate() {
                     <View style={styles.metricsGrid}>
                         <View style={styles.metricRow}>
                             <CircularProgress
-                                value={88}
+                                value={50}
                                 maxValue={200}
                                 size={120}
                                 strokeWidth={12}
@@ -136,7 +137,7 @@ export default function HeartRate() {
                                 status="Good"
                             />
                             <CircularProgress
-                                value={50}
+                                value={75}
                                 maxValue={100}
                                 size={120}
                                 strokeWidth={12}
