@@ -18,6 +18,7 @@ import PlayGameScreen from './src/screens/PlayGameScreen';
 import GameResultScreen from './src/screens/GameResultScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import InsightsScreen from './src/screens/InsightsScreen';
+import HeartRate from './src/HeartRate';
 
 export type RootStackParamList = {
   Splash: undefined;
@@ -28,6 +29,7 @@ export type RootStackParamList = {
   Questionnaire: undefined;
   PlayGame: undefined;
   GameResult: { time: number; score: number; stressLevel: string };
+  HeartRate: undefined;
 };
 
 export type TabParamList = {
@@ -64,9 +66,9 @@ function MainTabs() {
           }
 
           return focused ? (
-            <View style={{ 
-              backgroundColor: '#4A90E2', 
-              borderRadius: 12, 
+            <View style={{
+              backgroundColor: '#4A90E2',
+              borderRadius: 12,
               padding: 10,
               width: 60,
               height: 60,
@@ -101,7 +103,7 @@ function MainTabs() {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator 
+      <Stack.Navigator
         initialRouteName="Splash"
         screenOptions={{ headerShown: false }}
       >
@@ -113,6 +115,7 @@ export default function App() {
         <Stack.Screen name="Questionnaire" component={QuestionnaireScreen} />
         <Stack.Screen name="PlayGame" component={PlayGameScreen} />
         <Stack.Screen name="GameResult" component={GameResultScreen} />
+        <Stack.Screen name="HeartRate" component={HeartRate} />
       </Stack.Navigator>
     </NavigationContainer>
   );

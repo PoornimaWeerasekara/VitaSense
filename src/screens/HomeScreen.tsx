@@ -9,7 +9,7 @@ export default function HomeScreen() {
   const [stressPercentage, setStressPercentage] = useState(15);
   const [heartRate, setHeartRate] = useState(92);
 
-  const getStressColor = () => {
+  const getStressColor = (): [string, string] => {
     switch (stressLevel.toLowerCase()) {
       case 'low':
         return ['#66BB6A', '#81C784'];
