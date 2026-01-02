@@ -30,7 +30,7 @@ export default function ActivitiesScreen() {
           style={[styles.activityCard, { backgroundColor: '#EF5350' }]}
           onPress={() => navigation.navigate('PlayGame')}
         >
-          <Text style={styles.activityText}>Play game</Text>
+          <Text style={styles.activityText}>Play Game</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={[styles.activityCard, { backgroundColor: '#66BB6A' }]}>
