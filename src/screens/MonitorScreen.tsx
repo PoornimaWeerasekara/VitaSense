@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Switch } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Switch, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -21,75 +21,77 @@ export default function MonitorScreen() {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.content}>
-        {/* Facial Monitoring Section */}
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Facial Monitoring</Text>
-            <Switch
-              value={facialMonitoring}
-              onValueChange={setFacialMonitoring}
-              trackColor={{ false: '#D0D0D0', true: '#66BB6A' }}
-              thumbColor={facialMonitoring ? '#FFF' : '#F4F3F4'}
-            />
-          </View>
-          <Text style={styles.sectionDescription}>
-            Images captured randomly. No images stored.{'\n'}
-            Your privacy is our priority
-          </Text>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.content}>
+          {/* Facial Monitoring Section */}
+          <View style={styles.section}>
+            <View style={styles.sectionHeader}>
+              <Text style={styles.sectionTitle}>Facial Monitoring</Text>
+              <Switch
+                value={facialMonitoring}
+                onValueChange={setFacialMonitoring}
+                trackColor={{ false: '#D0D0D0', true: '#66BB6A' }}
+                thumbColor={facialMonitoring ? '#FFF' : '#F4F3F4'}
+              />
+            </View>
+            <Text style={styles.sectionDescription}>
+              Images captured randomly. No images stored.{'\n'}
+              Your privacy is our priority
+            </Text>
 
-          <TouchableOpacity style={styles.actionButton}>
-            <Ionicons name="camera" size={24} color="white" />
-            <Text style={styles.actionButtonText}>Take photo now</Text>
-          </TouchableOpacity>
+            <TouchableOpacity style={styles.actionButton}>
+              <Ionicons name="camera" size={24} color="white" />
+              <Text style={styles.actionButtonText}>Take photo now</Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* Web Activity Monitoring Section */}
+          <View style={styles.section}>
+            <View style={styles.sectionHeader}>
+              <Text style={styles.sectionTitle}>Web Activity Monitoring</Text>
+              <Switch
+                value={webActivityMonitoring}
+                onValueChange={setWebActivityMonitoring}
+                trackColor={{ false: '#D0D0D0', true: '#66BB6A' }}
+                thumbColor={webActivityMonitoring ? '#FFF' : '#F4F3F4'}
+              />
+            </View>
+            <Text style={styles.sectionDescription}>
+              Monitoring web browsing patterns for stress indicators
+            </Text>
+
+            <View style={styles.statusCard}>
+              <Ionicons name="globe" size={24} color="#4A90E2" />
+              <Text style={styles.statusText}>Browsing activity analyzed locally.</Text>
+            </View>
+          </View>
+
+          {/* Heart Rate Monitoring Section */}
+          <View style={styles.section}>
+            <Text style={styles.sectionTitle}>Heart rate Monitoring</Text>
+            <Text style={styles.sectionDescription}>
+              Real time heart rate data from connected device.
+            </Text>
+
+            <View style={styles.heartRateContainer}>
+              <Text style={styles.heartRateValue}>{heartRate} bpm</Text>
+              <Text style={styles.heartRateStatus}>- NORMAL</Text>
+            </View>
+
+            <TouchableOpacity
+              style={[styles.actionButton, { backgroundColor: '#EF5350' }]}
+              onPress={() => navigation.navigate('HeartRate')}
+            >
+              <Ionicons name="heart" size={24} color="white" />
+              <Text style={styles.actionButtonText}>Check heart rate now</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity>
+              <Text style={styles.historyLink}>See History</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-
-        {/* Web Activity Monitoring Section */}
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Web Activity Monitoring</Text>
-            <Switch
-              value={webActivityMonitoring}
-              onValueChange={setWebActivityMonitoring}
-              trackColor={{ false: '#D0D0D0', true: '#66BB6A' }}
-              thumbColor={webActivityMonitoring ? '#FFF' : '#F4F3F4'}
-            />
-          </View>
-          <Text style={styles.sectionDescription}>
-            Monitoring web browsing patterns for stress indicators
-          </Text>
-
-          <View style={styles.statusCard}>
-            <Ionicons name="globe" size={24} color="#4A90E2" />
-            <Text style={styles.statusText}>Browsing activity analyzed locally.</Text>
-          </View>
-        </View>
-
-        {/* Heart Rate Monitoring Section */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Heart rate Monitoring</Text>
-          <Text style={styles.sectionDescription}>
-            Real time heart rate data from connected device.
-          </Text>
-
-          <View style={styles.heartRateContainer}>
-            <Text style={styles.heartRateValue}>{heartRate} bpm</Text>
-            <Text style={styles.heartRateStatus}>- NORMAL</Text>
-          </View>
-
-          <TouchableOpacity
-            style={[styles.actionButton, { backgroundColor: '#EF5350' }]}
-            onPress={() => navigation.navigate('HeartRate')}
-          >
-            <Ionicons name="heart" size={24} color="white" />
-            <Text style={styles.actionButtonText}>Check heart rate now</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity>
-            <Text style={styles.historyLink}>See History</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
